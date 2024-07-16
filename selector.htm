@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Selector</title>        
+        <meta charset="utf-8>">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="rebelliume">
+        <script type="text/javascript" src="src/selector.js"></script>
+        <style type="text/css">
+            ::-webkit-scrollbar { width: 11px; }
+            ::-webkit-scrollbar-track { background-color: rgb(248, 248, 248); }
+            ::-webkit-scrollbar-thumb { background-color: rgba(152, 152, 152, 0.79); }
+            ::-webkit-scrollbar-thumb:hover { background-color: rgba(127, 127, 127, 0.79); }
+
+            :root {
+                scrollbar-width: thin;
+                scrollbar-color: rgba(152, 152, 152, 0.79) rgb(248, 248, 248);
+            }
+
+            ::selection { background-color: rgba(152, 152, 152, 0.79); }
+
+            html {
+                height: 100vh !important;
+                width: 100vw !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                scroll-behavior: smooth !important;
+            }
+            body {
+                background-color: #212121 !important;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                color: white !important;
+                width: 100% !important;
+                height: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                cursor: default !important;
+                overflow: hidden !important;
+                overflow-y: auto !important;
+                scroll-behavior: smooth !important;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(129, 129, 129, 0.79) rgba(66, 66, 66, 0.3);
+            }
+        </style>
+        <style type="text/css">
+            #selector {
+                position: absolute;
+                margin: 0 auto;
+                right: 0px;
+                left: 0px;
+                top: 50px;
+            }
+        </style>
+        <noscript>
+            <style type="text/css">
+            </style>
+        </noscript>
+    </head>
+<body>
+    <div id="selector"></div>
+</body>
+</html>
