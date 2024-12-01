@@ -9,11 +9,11 @@ CDN
 
 Normal
 ```bash
-https://cdn.jsdelivr.net/gh/thephibonacci/crafty@main/src/selector.js
+https://cdn.jsdelivr.net/gh/phicorp/crafty@main/src/selector.js
 ```
 Minify (Recommended)
 ```bash
-https://cdn.jsdelivr.net/gh/thephibonacci/crafty@main/src/selector.min.js
+https://cdn.jsdelivr.net/gh/phicorp/crafty@main/src/selector.min.js
 ```
 ## Features
 
