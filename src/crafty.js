@@ -1,20 +1,14 @@
-﻿/**
- * @name        Selector
- * @version     1.1.1
- * @author      rebelliume <rebelliume@gmail.com>
- * @contact     rebelliume
- * @copyright   rebelliume
- * @license     MIT
- * @released    2024/07/16
- * 
- * @returns {object}
- */
+﻿/*
+|--------------------------------------------------------------------------
+| Selector
+|--------------------------------------------------------------------------
+*/
 
-const Selector = function() {
+const Selector = function () {
     const $ = {
         $: function (element) {
             const defMethod = element;
-            
+
             const attributes = {
                 /**
                  *  @return {object} Style
@@ -26,21 +20,21 @@ const Selector = function() {
                  *  @param {string} Value
                  *  @return {string} Text
                  */
-                TEXT: function(value = null) {
+                TEXT: function (value = null) {
                     return value === null ? element.innerText : (element.innerText = value);
                 },
                 /**
                  *  @param {string} Value
                  *  @return {string} HTML
                  */
-                HTML: function(value = null) {
+                HTML: function (value = null) {
                     return value === null ? element.innerHTML : (element.innerHTML = value);
                 },
                 /**
                  *  @param {string} Value
                  *  @return {string} Value
                  */
-                VAL: function(value = null) {
+                VAL: function (value = null) {
                     return value === null ? element.value : (element.value = value);
                 },
                 /**
@@ -55,7 +49,7 @@ const Selector = function() {
                  *  @param {string} Value
                  *  @return {string} CSSText
                  */
-                CSS: function(value = null) {
+                CSS: function (value = null) {
                     return value === null ? element.cssText : (element.cssText = value);
                 },
                 /**
@@ -75,11 +69,11 @@ const Selector = function() {
                     return element.removeEventListener(value, callback);
                 }
             };
-    
+
             Object.keys(attributes).forEach(key => defMethod[key] = attributes[key]);
-        
+
             return defMethod;
-        },    
+        },
         /**
          *  @param {string} Value
          *  @return {object} DOM
@@ -151,7 +145,7 @@ const Selector = function() {
          *  @return {string} Cookie
          */
         COOKIE: function (name, value = null, expire = null) {
-            if(value === null) {
+            if (value === null) {
                 const data = document.cookie.split(';');
                 for (let i = 0; i < data.length; i++) {
                     const cookie = data[i].trim();
@@ -202,14 +196,14 @@ const Selector = function() {
          *  @param {number} Time
          */
         INTERVAL: function (callback, value) {
-            setInterval(callback, value); 
+            setInterval(callback, value);
         },
         /**
          *  @param {object} Callback
          *  @param {number} Time
          */
         CLEARINTERVAL: function (value) {
-            clearInterval(value) 
+            clearInterval(value)
         },
         /**
          *  @param {object} Value
@@ -225,49 +219,48 @@ const Selector = function() {
          *  @return {boolean} Type
          */
         TYPE: function (value, type = null) {
-            if(type === null) {
+            if (type === null) {
                 return typeof value;
             }
             else {
-                switch (type)
-                {
+                switch (type) {
                     case 'object':
                         return typeof value == 'object';
-                    break;
+                        break;
                     case 'string':
                         return typeof value == 'string';
-                    break;
+                        break;
                     case 'number':
                         return typeof value == 'number';
-                    break;
+                        break;
                     case 'boolean':
                         return typeof value == 'boolean';
-                    break;
+                        break;
                     case 'function':
                         return typeof value == 'function';
-                    break;
+                        break;
                     case 'undefined':
                         return typeof value == 'undefined';
-                    break;
+                        break;
                     case 'bigint':
                         return typeof value == 'bigint';
-                    break;
+                        break;
                     case 'array':
                         return Array.isArray(value);
-                    break;
+                        break;
                     case 'null':
                         return value === null;
-                    break;
+                        break;
                     case 'empty':
                         return typeof value === 'undefined' || value === null || value === '';
-                    break;
+                        break;
                     case 'defined':
                         return typeof value !== 'undefined' && value !== null;
-                    break;
+                        break;
                     default:
                         return false;
                 }
-            }        
+            }
         },
         /**
          *  @param {object} Object
@@ -275,29 +268,28 @@ const Selector = function() {
          *  @return {object} Cast
          */
         CAST: function (value, type) {
-            switch (type)
-            {
-                case 'string':                
+            switch (type) {
+                case 'string':
                     return String(value);
-                break;
+                    break;
                 case 'number':
                     return Number(value);
-                break;
+                    break;
                 case 'int':
                     return parseInt(value);
-                break;
+                    break;
                 case 'float':
                     return parseFloat(value);
-                break;
+                    break;
                 case 'boolean':
                     return Boolean(value);
-                break;
+                    break;
                 case 'bigint':
                     return BigInt(value);
-                break;
+                    break;
                 default:
                     return value;
-            }    
+            }
         },
         /**
          *  @param {object} Object
@@ -306,29 +298,28 @@ const Selector = function() {
          *  @return {object} Convert
          */
         CONVERT: function (value, type, base) {
-            switch (type)
-            {
+            switch (type) {
                 case 'int':
                     return parseInt(value, base);
-                break;
-                case 'string':                
+                    break;
+                case 'string':
                     return value.toString(base);
-                break;            
+                    break;
                 default:
                     return value;
-            }    
+            }
         },
         /**
          *  @param {object} Options
          *  @return {object} AJAX
          */
-        AJAX: function(options) {
+        AJAX: function (options) {
             const xhr = new XMLHttpRequest();
-            
-            if (options.username && options.password) { 
+
+            if (options.username && options.password) {
                 xhr.open(options.method, options.url, options.async, options.username, options.password);
             }
-            else { 
+            else {
                 xhr.open(options.method, options.url, true);
             }
             if (options.headers) {
@@ -365,7 +356,7 @@ const Selector = function() {
                     options.success(JSON.parse(cachedResponse), 200);
                     return;
                 }
-            }        
+            }
             if (options.cache) {
                 xhr.addEventListener('load', function () {
                     localStorage.setItem(options.url, xhr.responseText);
@@ -418,15 +409,15 @@ const Selector = function() {
                 let retries = 0;
                 const retryLimit = options.retryLimit || 3;
                 const retryInterval = options.retryInterval || 1000;
-        
+
                 xhr.addEventListener('error', function () {
                     if (retries < retryLimit) {
                         setTimeout(function () {
                             retries++;
-                            if (options.username && options.password) { 
+                            if (options.username && options.password) {
                                 xhr.open(options.method, options.url, options.async, options.username, options.password);
                             }
-                            else { 
+                            else {
                                 xhr.open(options.method, options.url, true);
                             }
                             xhr.send(options.data);
@@ -442,10 +433,10 @@ const Selector = function() {
                         const redirectUrl = xhr.getResponseHeader('Location');
                         if (redirectUrl) {
                             options.url = redirectUrl;
-                            if (options.username && options.password) { 
+                            if (options.username && options.password) {
                                 xhr.open(options.method, options.url, options.async, options.username, options.password);
                             }
-                            else { 
+                            else {
                                 xhr.open(options.method, options.url, true);
                             }
                             xhr.send(options.data);
@@ -463,7 +454,7 @@ const Selector = function() {
          *  @param {object} Options
          *  @return {object} Fetch
          */
-        FETCH: function(options) {
+        FETCH: function (options) {
             let init = {
                 method: options.method,
                 headers: options.headers || {},
@@ -472,7 +463,7 @@ const Selector = function() {
                 cache: options.cache ? 'default' : 'no-store',
                 redirect: options.redirect ? 'follow' : 'manual'
             };
-            
+
             if (options.username && options.password) {
                 init.headers.Authorization = 'Basic ' + btoa(options.username + ':' + options.password);
             }
@@ -498,7 +489,7 @@ const Selector = function() {
             if (options.abort) {
                 const abortController = new AbortController();
                 const signal = abortController.signal;
-        
+
                 signal.addEventListener('abort', function () {
                     options.abort();
                 });
@@ -539,7 +530,7 @@ const Selector = function() {
                 let retries = 0;
                 const retryLimit = options.retryLimit || 3;
                 const retryInterval = options.retryInterval || 1000;
-        
+
                 function doFetch() {
                     fetch(options.url, init)
                         .then(function (response) {
@@ -626,10 +617,10 @@ const Selector = function() {
          *  @param {object} Options
          *  @return {object} Socket
          */
-        SOCKET: function(options) {
+        SOCKET: function (options) {
             const ws = new WebSocket(options.url);
-    
-            ws.onopen = function () { 
+
+            ws.onopen = function () {
                 if (options.onopen) {
                     options.onopen();
                 }
@@ -660,7 +651,7 @@ const Selector = function() {
          *  @param {string} Value
          *  @param {string} Options
          */
-        LOG: function (value, options = null) {    
+        LOG: function (value, options = null) {
             options === null ? console.log(value) : console.log(value, options);
         },
         /**
@@ -681,7 +672,337 @@ const Selector = function() {
     };
     for (const key in $) {
         if (typeof $[key] === 'function') {
-          window['$' + key] = $[key].bind($);
+            window['$' + key] = $[key].bind($);
         }
     }
 }();
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Http Request
+|--------------------------------------------------------------------------
+*/
+
+class Http {
+    constructor(type = 'fetch') {
+        this.type = type;
+        this.method = 'GET';
+        this.url = '';
+        this.headersData = {};
+        this.bodyData = null;
+        this.isFormData = false;
+    }
+
+    static get(url) {
+        return new Http('fetch').request('GET', url);
+    }
+
+    static post(url) {
+        return new Http('fetch').request('POST', url);
+    }
+
+    static get fetch() {
+        return {
+            get: (url) => new Http('fetch').request('GET', url),
+            post: (url) => new Http('fetch').request('POST', url),
+        };
+    }
+
+    static get ajax() {
+        return {
+            get: (url) => new Http('ajax').request('GET', url),
+            post: (url) => new Http('ajax').request('POST', url),
+        };
+    }
+
+    request(method, url) {
+        this.method = method;
+        this.url = url;
+        return this;
+    }
+
+    setHeaders(headers) {
+        this.headersData = { ...this.headersData, ...headers };
+        return this;
+    }
+
+    setBody(body) {
+        if (body instanceof FormData) {
+            this.isFormData = true;
+            this.bodyData = body;
+        } else {
+            this.isFormData = false;
+            this.bodyData = body;
+        }
+        return this;
+    }
+
+    async send() {
+        if (this.type === 'ajax') {
+            return this.sendAjax();
+        } else {
+            return this.sendFetch();
+        }
+    }
+
+    async sendFetch() {
+        const options = {
+            method: this.method,
+            headers: { ...this.headersData },
+        };
+
+        if (this.bodyData) {
+            if (this.isFormData) {
+                delete options.headers['Content-Type'];
+                options.body = this.bodyData;
+            } else {
+                options.headers['Content-Type'] = 'application/json';
+                options.body = JSON.stringify(this.bodyData);
+            }
+        }
+
+        const response = await fetch(this.url, options);
+
+        if (!response.ok) {
+            throw new Error(`HTTP Error: ${response.status} ${response.statusText}`);
+        }
+
+        return response.json();
+    }
+
+    sendAjax() {
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open(this.method, this.url, true);
+
+            Object.keys(this.headersData).forEach((key) => {
+                xhr.setRequestHeader(key, this.headersData[key]);
+            });
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resolve(JSON.parse(xhr.responseText));
+                    } else {
+                        reject(`HTTP Error: ${xhr.status} ${xhr.statusText}`);
+                    }
+                }
+            };
+
+            xhr.onerror = function () {
+                reject('Network Error');
+            };
+
+            if (this.bodyData) {
+                if (this.isFormData) {
+                    xhr.send(this.bodyData);
+                } else {
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.send(JSON.stringify(this.bodyData));
+                }
+            } else {
+                xhr.send();
+            }
+        });
+    }
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Validator
+|--------------------------------------------------------------------------
+*/
+
+class Validator {
+    constructor(rules, customMessages = {}) {
+        this.rules = rules;
+        this.errors = {};
+        this.successMessages = {};
+        this.customMessages = customMessages;
+    }
+
+    static create(rules, customMessages = {}) {
+        return new Validator(rules, customMessages);
+    }
+
+    addError(field, message) {
+        if (!this.errors[field]) {
+            this.errors[field] = [];
+        }
+        this.errors[field].push(message);
+    }
+
+    addSuccessMessage(field, message) {
+        if (!this.successMessages[field]) {
+            this.successMessages[field] = [];
+        }
+        this.successMessages[field].push(message);
+    }
+
+    run(formData) {
+        let valid = true;
+        Object.keys(this.rules).forEach(field => {
+            const rules = this.rules[field];
+            const value = formData.get(field);
+            this.errors[field] = [];
+            this.successMessages[field] = [];
+
+            rules.forEach(rule => {
+                if (typeof rule === 'string' && this[rule]) {
+                    this[rule](field, value);
+                } else if (typeof rule === 'object' && rule.method && this[rule.method]) {
+                    this[rule.method](field, value, rule.value);
+                }
+            });
+
+            if (this.errors[field].length === 0) {
+                this.addSuccessMessage(field, `✔️ ${field} is valid`);
+            } else {
+                valid = false;
+            }
+        });
+
+        return { valid, errors: this.errors, successMessages: this.successMessages };
+    }
+
+    getMessage(field, rule) {
+        const defaultMessages = {
+            required: `${field} is required.`,
+            min: `${field} must be at least {value} characters.`,
+            max: `${field} cannot exceed {value} characters.`,
+            email: `${field} is not a valid email.`,
+            alpha: `${field} must contain only letters.`,
+            numeric: `${field} must be a number.`,
+            persian: `${field} must contain only Persian letters.`,
+            englishNumber: `${field} must contain only English numbers.`,
+            persianNumber: `${field} must contain only Persian numbers.`,
+            maxValue: `${field} cannot be greater than {value}.`,
+            minValue: `${field} cannot be less than {value}.`,
+            date: `${field} must be a valid date.`,
+            url: `${field} must be a valid URL.`
+        };
+
+        return this.customMessages[field] && this.customMessages[field][rule] ?
+            this.customMessages[field][rule] : defaultMessages[rule] || `${field} is invalid.`;
+    }
+
+    required(field, value) {
+        if (!value.trim()) {
+            this.addError(field, this.getMessage(field, 'required'));
+        }
+    }
+
+    min(field, value, minLength) {
+        if (value.length < minLength) {
+            this.addError(field, this.getMessage(field, 'min').replace('{value}', minLength));
+        }
+    }
+
+    max(field, value, maxLength) {
+        if (value.length > maxLength) {
+            this.addError(field, this.getMessage(field, 'max').replace('{value}', maxLength));
+        }
+    }
+
+    email(field, value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            this.addError(field, this.getMessage(field, 'email'));
+        }
+    }
+
+    alpha(field, value) {
+        const alphaRegex = /^[A-Za-z]+$/;
+        if (!alphaRegex.test(value)) {
+            this.addError(field, this.getMessage(field, 'alpha'));
+        }
+    }
+
+    numeric(field, value) {
+        if (value && !/^[0-9]+$/.test(value)) {
+            this.addError(field, this.getMessage(field, 'numeric'));
+        }
+    }
+
+    persian(field, value) {
+        if (value && !/^[آ-ی]+$/.test(value)) {
+            this.addError(field, this.getMessage(field, 'persian'));
+        }
+    }
+
+    englishNumber(field, value) {
+        if (value && !/^[0-9]+$/.test(value)) {
+            this.addError(field, this.getMessage(field, 'englishNumber'));
+        }
+    }
+
+    persianNumber(field, value) {
+        if (value && !/^[۰-۹]+$/.test(value)) {
+            this.addError(field, this.getMessage(field, 'persianNumber'));
+        }
+    }
+
+    maxValue(field, value, max) {
+        if (parseInt(value) > parseInt(max)) {
+            this.addError(field, this.getMessage(field, 'maxValue').replace('{value}', max));
+        }
+    }
+
+    minValue(field, value, min) {
+        if (parseInt(value) < parseInt(min)) {
+            this.addError(field, this.getMessage(field, 'minValue').replace('{value}', min));
+        }
+    }
+
+    isValid() {
+        return Object.keys(this.errors).every(field => this.errors[field].length === 0);
+    }
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| helper function
+|--------------------------------------------------------------------------
+*/
+
+function gbi(id) {
+    const element = document.getElementById(id);
+    if (element) {
+        return element;
+    } else {
+        console.warn(`${id} not found!`);
+        return null;
+    }
+}
+
+function exists(selector) {
+    return document.querySelector(selector) !== null;
+}
+
+function docTitle(title) {
+    document.title = title;
+}
+
+function disable(element) {
+    element.disabled = true;
+}
+
+function enable(element) {
+    element.disabled = false;
+}
+
+function disableAllInputs(form) {
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => input.disabled = true);
+}
+
+function enableAllInputs(form) {
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => input.disabled = false);
+}

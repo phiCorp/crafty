@@ -26,4 +26,5 @@ https://cdn.jsdelivr.net/gh/phicorp/crafty@main/src/selector.min.js
 ## Authors
 
 - [@rebelliume](https://www.github.com/rebelliume)
+- [@thephibonacci](https://www.github.com/thephibonacci)
 
